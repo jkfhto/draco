@@ -154,12 +154,14 @@ C:\Users\nobody> cmake path/to/draco -G "Visual Studio 14 2015 Win64"
 CMake Build Configuration
 -------------------------
 
-Debugging and Optimization
+Debugging and Optimization  调试和优化
 --------------------------
 
 Unlike Visual Studio and Xcode projects, the build configuration for make
 builds is controlled when you run `cmake`. The following examples demonstrate
 various build configurations.
+
+与Visual Studio和Xcode项目不同，在运行cmake时make build的构建配置会受到控制。以下示例演示了各种构建配置
 
 Omitting the build type produces makefiles that use release build flags
 by default:
@@ -193,12 +195,14 @@ sanitizer type when running CMake:
 $ cmake path/to/draco -DSANITIZE=address
 ~~~~~
 
-Googletest Integration
+Googletest Integration  Googletest整合
 ----------------------
 
 Draco includes testing support built using Googletest. To enable Googletest unit
 test support the ENABLE_TESTS cmake variable must be turned on at cmake
 generation time:
+
+Draco包含使用Googletest构建的测试支持。要启用Googletest单元测试支持，必须在cmake生成时启用ENABLE_TESTS cmake变量
 
 ~~~~~ bash
 $ cmake path/to/draco -DENABLE_TESTS=ON
@@ -208,6 +212,8 @@ When cmake is used as shown in the above example the Draco cmake file assumes
 that the Googletest source directory is a sibling of the Draco repository. To
 change the location to something else use the GTEST_SOURCE_DIR cmake variable:
 
+如上例所示使用cmake时，Draco cmake文件假定Googletest源目录是Draco存储库的同级。要将位置更改为其他位置，请使用GTEST_SOURCE_DIR cmake变量
+
 ~~~~~ bash
 $ cmake path/to/draco -DENABLE_TESTS=ON -DGTEST_SOURCE_DIR=path/to/googletest
 ~~~~~
@@ -215,8 +221,10 @@ $ cmake path/to/draco -DENABLE_TESTS=ON -DGTEST_SOURCE_DIR=path/to/googletest
 To run the tests just execute `draco_tests` from your toolchain's build output
 directory.
 
+要运行测试，只需从工具链的构建输出目录执行draco_tests
 
-Javascript Encoder/Decoder
+
+Javascript Encoder/Decoder  Javascript编码器/解码器
 ------------------
 
 The javascript encoder and decoder can be built using the existing cmake build
@@ -224,6 +232,8 @@ file by passing the path the Emscripten's cmake toolchain file at cmake
 generation time in the CMAKE_TOOLCHAIN_FILE variable.
 In addition, the EMSCRIPTEN environment variable must be set to the local path
 of the parent directory of the Emscripten tools directory.
+
+JavaScript编码器和解码器可以使用现有的cmake构建文件构建，方法是在cmake生成时将Emscripten的cmake工具链文件的路径传递给CMAKE_TOOLCHAIN_FILE变量。 另外，必须将EMSCRIPTEN环境变量设置为Emscripten工具目录的父目录的本地路径
 
 ~~~~~ bash
 # Make the path to emscripten available to cmake.
@@ -237,17 +247,21 @@ $ cmake path/to/draco -DCMAKE_TOOLCHAIN_FILE=/path/to/Emscripten.cmake
 $ make
 ~~~~~
 
-WebAssembly Decoder
+WebAssembly Decoder  WebAssembly解码器
 -------------------
 
 The WebAssembly decoder can be built using the existing cmake build file by
 passing the path the Emscripten's cmake toolchain file at cmake generation time
 in the CMAKE_TOOLCHAIN_FILE variable and enabling the WASM build option.
 In addition, the EMSCRIPTEN environment variable must be set to the local path
-of the parent directory of the Emscripten tools directory.
+of the parent directory of the Emscripten tools directory.、
+
+WebAssembly解码器可以使用现有的cmake构建文件构建，方法是在cmake生成时将Emscripten的cmake工具链文件的路径传递到CMAKE_TOOLCHAIN_FILE变量中，并启用WASM构建选项。 另外，必须将EMSCRIPTEN环境变量设置为Emscripten工具目录的父目录的本地路径
 
 Make sure to have the correct version of Emscripten installed for WebAssembly
 builds. See https://developer.mozilla.org/en-US/docs/WebAssembly.
+
+确保为WebAssembly构建安装了正确版本的Emscripten
 
 ~~~~~ bash
 # Make the path to emscripten available to cmake.
@@ -265,7 +279,7 @@ $ java -jar closure.jar --compilation_level SIMPLE --js draco_decoder.js --js_ou
 
 ~~~~~
 
-WebAssembly Mesh Only Decoder
+WebAssembly Mesh Only Decoder  WebAssembly  仅限网格解码器
 -----------------------------
 
 ~~~~~ bash
@@ -275,7 +289,7 @@ $ cmake path/to/draco -DCMAKE_TOOLCHAIN_FILE=/path/to/Emscripten.cmake -DENABLE_
 
 ~~~~~
 
-WebAssembly Point Cloud Only Decoder
+WebAssembly Point Cloud Only Decoder  WebAssembly点云解码器
 -----------------------------
 
 ~~~~~ bash
@@ -475,7 +489,7 @@ Please see [src/draco/mesh/mesh.h](src/draco/mesh/mesh.h) for the full `Mesh` cl
 [src/draco/point_cloud/point_cloud.h](src/draco/point_cloud/point_cloud.h) for the full `PointCloud` class interface.
 
 
-Javascript Encoder API
+Javascript Encoder API  Javascript编码器API
 ----------------------
 The Javascript encoder is located in `javascript/draco_encoder.js`. The encoder
 API can be used to compress mesh and point cloud. In order to use the encoder,
@@ -487,6 +501,8 @@ use `AddFacesToMesh()` to add indices to the mesh and use
 `AddFloatAttributeToMesh()` to add attribute data to the mesh, e.g. position,
 normal, color and texture coordinates. After a mesh is constructed, you could
 then use `EncodeMeshToDracoBuffer()` to compress the mesh. For example:
+
+Javascript编码器位于`javascript/draco_encoder.js`文件中。 编码器API可用于压缩网格和点云。 为了使用编码器，您需要先创建一个DracoEncoderModule的实例。 然后使用这个实例来创建MeshBuilder和Encoder对象。 MeshBuilder用于从几何数据构造网格，之后由编码器进行压缩。 首先使用`new encoderModule.Mesh()`创建一个网格对象。 然后，使用AddFacesToMesh（）将索引添加到网格，并使用AddFloatAttributeToMesh（）将位置，法线，颜色和纹理坐标等属性数据添加到网格中。 网格构建好之后，可以使用EncodeMeshToDracoBuffer（）压缩网格。 例如：
 
 ~~~~~ js
 const mesh = {
@@ -534,9 +550,9 @@ encoderModule.destroy(encoder);
 encoderModule.destroy(meshBuilder);
 
 ~~~~~
-Please see [src/draco/javascript/emscripten/draco_web_encoder.idl](src/draco/javascript/emscripten/draco_web_encoder.idl) for the full API.
+Please see [src/draco/javascript/emscripten/draco_web_encoder.idl](src/draco/javascript/emscripten/draco_web_encoder.idl) for the full API.完整的API查看路径
 
-Javascript Decoder API
+Javascript Decoder API  Javascript解码器API
 ----------------------
 
 The Javascript decoder is located in [javascript/draco_decoder.js](javascript/draco_decoder.js). The
@@ -547,6 +563,8 @@ the encoded data in the `DecoderBuffer`. Then call `GetEncodedGeometryType()`
 to identify the type of geometry, e.g. mesh or point cloud. Then call either
 `DecodeBufferToMesh()` or `DecodeBufferToPointCloud()`, which will return
 a Mesh object or a point cloud. For example:
+
+Javascript解码器位于`javascript/draco_decoder.js`文件中。 Javascript解码器可以解码网格和点云。 为了使用解码器，你必须首先创建一个DracoDecoderModule的实例。 该实例随后被用来创建DecoderBuffer和Decoder对象。 在DecoderBuffer中设置编码数据。 然后调用GetEncodedGeometryType（）来确定几何体的类型，例如 网格或点云。 然后调用DecodeBufferToMesh（）或DecodeBufferToPointCloud（），它将返回一个Mesh对象或一个点云。 例如：
 
 ~~~~~ js
 // Create the Draco decoder.
@@ -576,9 +594,9 @@ decoderModule.destroy(decoder);
 decoderModule.destroy(buffer);
 ~~~~~
 
-Please see [src/draco/javascript/emscripten/draco_web_decoder.idl](src/draco/javascript/emscripten/draco_web_decoder.idl) for the full API.
+Please see [src/draco/javascript/emscripten/draco_web_decoder.idl](src/draco/javascript/emscripten/draco_web_decoder.idl) for the full API.  完整的API查看路径
 
-Javascript Decoder Performance
+Javascript Decoder Performance  Javascript解码器性能
 ------------------------------
 
 The Javascript decoder is built with dynamic memory. This will let the decoder
@@ -586,6 +604,8 @@ work with all of the compressed data. But this option is not the fastest.
 Pre-allocating the memory sees about a 2x decoder speed improvement. If you
 know all of your project's memory requirements, you can turn on static memory
 by changing `Makefile.emcc` and running `make -f Makefile.emcc`.
+
+Javascript解码器是用动态内存构建的。 这将让解码器处理所有的压缩数据。 但是这个选项并不是最快的。 预先分配内存可以使解码器的速度提高2倍左右。 如果您知道项目的所有内存要求，则可以通过更改Makefile.emcc并运行make -f Makefile.emcc来打开静态内存
 
 Metadata API
 ------------
@@ -643,7 +663,7 @@ NPM Package
 Draco NPM NodeJS package is located in [javascript/npm/draco3d](javascript/npm/draco3d). Please see the
 doc in the folder for detailed usage.
 
-three.js Renderer Example
+three.js Renderer Example  three.js渲染器示例
 -------------------------
 
 Here's an [example] of a geometric compressed with Draco loaded via a
