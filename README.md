@@ -28,15 +28,17 @@ News  最新消息
 * Added support for integer properties to the PLY decoder
 * Bug fixes
 
-### Previous releases
+### Previous releases  以前的版本
 https://github.com/google/draco/releases
 
-Description
+Description  描述
 ===========
 
 Draco is a library for compressing and decompressing 3D geometric [meshes] and
 [point clouds]. It is intended to improve the storage and transmission of 3D
 graphics.
+
+Draco是一个用于压缩和解压缩3D几何网格和点云的库。它旨在改善3D图形的存储和传输。
 
 Draco was designed and built for compression efficiency and speed. The code
 supports compressing points, connectivity information, texture coordinates,
