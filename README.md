@@ -3,11 +3,11 @@
 <img src="docs/DracoLogo.jpeg" />
 </p>
 
-News
+News  最新消息
 =======
-### Version 1.3.3 release
-* Added ExpertEncoder to the Javascript API
-  * Allows developers to set quantization options per attribute id
+### Version 1.3.3 release  版本1.3.3发布
+* Added ExpertEncoder to the Javascript API  向Javascript API添加了ExpertEncoder
+  * Allows developers to set quantization options per attribute id  允许开发人员为每个属性ID设置量化选项
 * Bug fixes
 
 ### Version 1.3.2 release
