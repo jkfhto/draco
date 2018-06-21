@@ -49,13 +49,17 @@ now be downloaded faster, 3D graphics in the browser can load quicker, and VR
 and AR scenes can now be transmitted with a fraction of the bandwidth and
 rendered quickly.
 
+Draco是为提高压缩效率和加载速度而设计和制造的。 支持压缩点，连通性信息，纹理坐标，颜色信息，法线和任何其他与几何关联的通用属性。 借助Draco，使用3D图形的应用程序的大小可以显着缩小，而不会影响视觉保真度。 对于用户而言，这意味着现在应用程序可以更快下载，浏览器中的3D图形可以更快加载，而VR和AR场景现在可以基于小部分带宽进行传输和快速渲染。
+
 Draco is released as C++ source code that can be used to compress 3D graphics
 as well as C++ and Javascript decoders for the encoded data.
 
+Draco作为C ++源代码发布，可作为压缩3D图形以及编码数据的C ++和Javascript解码器。
 
-_**Contents**_
 
-  * [Building](#building)
+_**Contents**_  内容
+
+  * [Building](#building)  构建
     * [CMake Basics](#cmake-basics)
     * [Mac OS X](#mac-os-x)
     * [Windows](#windows)
@@ -65,7 +69,7 @@ _**Contents**_
       * [Javascript Encoder/Decoder](#javascript-encoderdecoder)
     * [Android Studio Project Integration](#android-studio-project-integration)
     * [Native Android Builds](#native-android-builds)
-  * [Usage](#usage)
+  * [Usage](#usage)  用法
     * [Command Line Applications](#command-line-applications)
     * [Encoding Tool](#encoding-tool)
     * [Encoding Point Clouds](#encoding-point-clouds)
@@ -87,12 +91,16 @@ Building
 For all platforms, you must first generate the project/make files and then
 compile the examples.
 
-CMake Basics
+对于所有平台，首先必须生成 project/ make文件，然后编译示例
+
+CMake Basics  CMake基础知识
 ------------
 
 To generate project/make files for the default toolchain on your system, run
 `cmake` from a directory where you would like to generate build files, and pass
 it the path to your Draco repository.
+
+要为系统上的默认工具链生成 project/make 文件，请从您想要生成构建文件的目录运行cmake，并将路径传递给Draco存储库
 
 ~~~~~ bash
 $ cmake path/to/draco
@@ -102,15 +110,21 @@ On Windows, the above command will produce Visual Studio project files for the
 newest Visual Studio detected on the system. On Mac OS X and Linux systems,
 the above command will produce a `makefile`.
 
+在Windows上，上述命令将为系统上检测到的最新Visual Studio生成Visual Studio项目文件。在Mac OS X和Linux系统上，上述命令将生成一个makefile
+
 To control what types of projects are generated, add the `-G` parameter to the
 `cmake` command. This argument must be followed by the name of a generator.
 Running `cmake` with the `--help` argument will list the available
 generators for your system.
 
+要控制生成哪些类型的项目，请将-G参数添加到cmake命令。这个参数后面必须跟一个生成器的名字。使用--help参数运行cmake将列出系统可用的生成器
+
 Mac OS X
 ---------
 
 On Mac OS X, run the following command to generate Xcode projects:
+
+在Mac OS X上，运行以下命令生成Xcode项目
 
 ~~~~~ bash
 $ cmake path/to/draco -G Xcode
@@ -122,11 +136,15 @@ Windows
 On a Windows box you would run the following command to generate Visual Studio
 2015 projects:
 
+在Windows机器上，您将运行以下命令来生成Visual Studio 2015项目
+
 ~~~~~ bash
 C:\Users\nobody> cmake path/to/draco -G "Visual Studio 14 2015"
 ~~~~~
 
 To generate 64-bit Windows Visual Studio 2015 projects:
+
+要生成64位Windows Visual Studio 2015项目，请执行以下操作
 
 ~~~~~ bash
 C:\Users\nobody> cmake path/to/draco -G "Visual Studio 14 2015 Win64"
