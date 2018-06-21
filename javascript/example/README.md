@@ -33,7 +33,7 @@ In this example, you could:
 
 (1) Switch between Javascript decoder and WebAssembly decoder if it's supported by the browser.
 
-如果浏览器支持Javascript解码器和WebAssembly解码器，请进行切换
+根据浏览器的兼容性切换Javascript解码器和WebAssembly解码器
 
 (2) Load your own encoded Draco file (.drc) by clicking on "Choose File" and select a file.
 
