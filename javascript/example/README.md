@@ -6,17 +6,25 @@ Quick Start
 To start using Draco, you could try the example `webgl_loader_draco.html`.
 The code shows a simple example of integration of threejs and Draco Javascript or WebAssembly decoder. From the example, you should be able to load an encoded Draco mesh file and visualize it through threejs's fancy 3D tools.
 
-How to run the example code:
+要开始使用Draco，您可以运行一下webgl_loader_draco.html示例。 该代码展示了一个集成threejs和Draco Javascript或WebAssembly解码器的简单示例。 从这个例子中，你应该能够加载一个编码的Draco网格文件，并通过threejs工具将其可视化。
+
+How to run the example code:  如何运行示例代码：
 
 (1) Clone this project to a working directory, e.g. draco/.
+
+将此项目克隆到工作目录，例如draco/
 
 (2) From the project's root directory, start a local http server.
 E.g, with Python, you could run "python -m SimpleHTTPServer".
 
+从项目的根目录中，启动一个本地http服务器。例如，用Python，你可以运行“python -m SimpleHTTPServer”
+
 (3) Load javascript/example/webgl_loader_draco.html. You should be able to see
 a bunny rendered by threejs using Draco loader.
 
-Advanced Example
+运行JavaScript / example / webgl_loader_draco.html。你应该能够看到一个使用Draco loader由threejs渲染的兔子
+
+Advanced Example  高级示例
 ---------------------
 To use more advanced features of Draco loader, please look at the example `webgl_loader_draco_advanced.html`.
 In this example, you could:
