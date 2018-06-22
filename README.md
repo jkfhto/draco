@@ -387,10 +387,10 @@ After building the tools they can be moved to an android device via the use of
 `adb push`, and then run within an `adb shell` instance.
 
 
-Usage
+Usage  用法
 ======
 
-Command Line Applications
+Command Line Applications  命令行应用程序
 ------------------------
 
 The default target created from the build files will be the `draco_encoder`
@@ -398,12 +398,16 @@ and `draco_decoder` command line applications. For both applications, if you
 run them without any arguments or `-h`, the applications will output usage and
 options.
 
-Encoding Tool
+从构建文件创建的默认目标将是draco_encoder和draco_decoder命令行应用程序,对于这两个应用程序，如果您运行它们时没有任何参数或-h，则应用程序将输出使用情况和选项
+
+Encoding Tool  编码工具
 -------------
 
 `draco_encoder` will read OBJ or PLY files as input, and output Draco-encoded
 files. We have included Stanford's [Bunny] mesh for testing. The basic command
 line looks like this:
+
+draco_encoder将读取OBJ或PLY文件作为输入，并输出Draco-encoded的文件。我们已经使用斯坦福的兔子网格进行测试。基本的命令行如下所示
 
 ~~~~~ bash
 ./draco_encoder -i testdata/bun_zipper.ply -o out.drc
@@ -413,19 +417,27 @@ A value of `0` for the quantization parameter will not perform any quantization
 on the specified attribute. Any value other than `0` will quantize the input
 values for the specified attribute to that number of bits. For example:
 
+量化参数的值为0将不对指定的属性执行任何量化。除0以外的任何值都会将指定属性的输入值量化为该位数。例如
+
 ~~~~~ bash
 ./draco_encoder -i testdata/bun_zipper.ply -o out.drc -qp 14
 ~~~~~
 
 will quantize the positions to 14 bits (default for the position coordinates).
 
+将位置量化为14位（位置坐标的默认值）
+
 In general, the more you quantize your attributes the better compression rate
 you will get. It is up to your project to decide how much deviation it will
 tolerate. In general, most projects can set quantization values of about `14`
 without any noticeable difference in quality.
 
+一般来说，你量化属性越多，压缩率就越高。由您的项目决定它将容许多少偏差。一般来说，大多数项目可以设置大约14的量化值，而质量没有任何明显的差异
+
 The compression level (`-cl`) parameter turns on/off different compression
 features.
+
+压缩级别参数（-cl）打开/关闭不同的压缩功能
 
 ~~~~~ bash
 ./draco_encoder -i testdata/bun_zipper.ply -o out.drc -cl 8
@@ -435,13 +447,17 @@ In general, the highest setting, `10`, will have the most compression but
 worst decompression speed. `0` will have the least compression, but best
 decompression speed. The default setting is `7`.
 
-Encoding Point Clouds
+一般来说，最高设置10将具有最高的压缩率，但最差的解压速度。 0将具有最小的压缩率，但是最好的解压缩速度。默认设置是7
+
+Encoding Point Clouds  编码点云
 ---------------------
 
 You can encode point cloud data with `draco_encoder` by specifying the
 `-point_cloud` parameter. If you specify the `-point_cloud` parameter with a
 mesh input file, `draco_encoder` will ignore the connectivity data and encode
 the positions from the mesh file.
+
+您可以通过指定-point_cloud参数，使用draco_encoder对点云数据进行编码。如果对网格输入文件指定了-point_cloud参数，则draco_encoder将忽略连接数据并对网格文件中的位置进行编码
 
 ~~~~~ bash
 ./draco_encoder -point_cloud -i testdata/bun_zipper.ply -o out.drc
@@ -452,11 +468,15 @@ input might not produce compression that is representative of other point
 clouds. Specifically, one can expect much better compression rates for larger
 and denser point clouds.
 
-Decoding Tool
+该命令行将网格输入编码为点云，即使输入可能不会产生代表其他点云的压缩。具体而言，对于更大和更密集的点云，人们可以期望更好的压缩率
+
+Decoding Tool  解码工具
 -------------
 
 `draco_decoder` will read Draco files as input, and output OBJ or PLY files.
 The basic command line looks like this:
+
+draco_decoder将读取Draco文件作为输入，并输出OBJ或PLY文件。基本的命令行如下所示
 
 ~~~~~ bash
 ./draco_decoder -i in.drc -o out.obj
