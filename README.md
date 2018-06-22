@@ -663,6 +663,7 @@ NPM Package
 Draco NPM NodeJS package is located in [javascript/npm/draco3d](javascript/npm/draco3d). Please see the
 doc in the folder for detailed usage.
 
+Draco NPM NodeJS软件包位于javascript / npm / draco3d中。请参阅该文件夹中的文档了解详细用法
 three.js Renderer Example  three.js渲染器示例
 -------------------------
 
